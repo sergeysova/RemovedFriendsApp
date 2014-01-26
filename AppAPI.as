@@ -35,11 +35,12 @@ package {
 			for ( var j:Object in data ) {
 				uVars[j] = data[j];
 			}
+			
 			uRequest.method = URLRequestMethod.POST;
 			uRequest.data = uVars;
 			uLoader.addEventListener(Event.COMPLETE, this.callComplete );
 			uLoader.addEventListener(IOErrorEvent.IO_ERROR, this.callError );
-			uLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, this.callError );
+			uLoader.addEventListener(SecurityErrorEvent.SECURITY_ERROR, this.callError2 );
 			uLoader.load( uRequest );
 		}
 		
@@ -61,7 +62,12 @@ package {
 		}
 		
 		private function callError(e:Event):void {
-			uOnError({error: 900, error_msg: ""});
+			uOnError({error: 900, error_msg: "IO Error !"}); //Method call error! 
+			removeEventListeners();
+		}
+		
+		private function callError2(e:Event):void {
+			uOnError({error: 902, error_msg: "Security error!"}); //Method call error! 
 			removeEventListeners();
 		}
 	}
