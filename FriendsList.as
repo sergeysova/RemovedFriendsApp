@@ -41,7 +41,7 @@
 						imgss.x = 0;
 						imgss.y = 0;
 						imgss.visible = true;
-						temp.addChild(loader);
+						temp.addChild(imgss);
 						temp.ff.appendText(" )");
 						trace("Load complete!");
 					});
