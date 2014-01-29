@@ -7,6 +7,8 @@
 	import flash.errors.*;
 	import flash.events.*;
 	import flash.net.URLLoaderDataFormat;
+	import flash.display.BitmapData;
+	import flash.system.LoaderContext;
 	
 	public class FriendsList {
 		private var list:MovieClip;
@@ -29,14 +31,18 @@
 					var url:String = image as String;
 					trace("avatar loading: ", url);
 					loader = new Loader();
+					loader.cacheAsBitmap = true;
 					loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event){
 						trace("Avatar loaded...");
-						temp.ff.appendText(" (_(!)_)");
-						var img:Bitmap = loader.contentLoaderInfo.content as Bitmap;
-						img.x = 0;
-						img.y = 0;
-						img.visible = true;
-						temp.addChild(img);
+						temp.ff.appendText(" (");
+						temp.ff.appendText(" " + loader.contentLoaderInfo.contentType);
+						var imgss:Bitmap = loader.contentLoaderInfo.content as Bitmap;
+						temp.ff.appendText(" -");
+						imgss.x = 0;
+						imgss.y = 0;
+						imgss.visible = true;
+						temp.addChild(loader);
+						temp.ff.appendText(" )");
 						trace("Load complete!");
 					});
 					loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR,
@@ -51,7 +57,9 @@
 							temp.ff.appendText(" Security Error");
 						}
 					);
-					loader.load( new URLRequest( url + "?" + int(Math.random() * 100000) ) );
+					var context:LoaderContext = new LoaderContext();
+					context.checkPolicyFile = false;
+					loader.load( new URLRequest( url + "?" + int(Math.random() * 100000) ), context );
 				//}
 				//loadAvatar(image);
 			}
