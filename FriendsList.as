@@ -34,7 +34,7 @@
 					loader.cacheAsBitmap = true;
 					loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event){
 						trace("Avatar loaded...");
-						temp.ff.appendText(" (");
+						temp.ff.appendText(" ("); // Debug
 						temp.ff.appendText(" " + loader.contentLoaderInfo.contentType);
 						var imgss:Bitmap = loader.contentLoaderInfo.content as Bitmap;
 						temp.ff.appendText(" -");
