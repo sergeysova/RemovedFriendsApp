@@ -9,6 +9,7 @@
 	import flash.net.URLLoaderDataFormat;
 	import flash.display.BitmapData;
 	import flash.system.LoaderContext;
+	import com.controls.MLoader;
 	
 	public class FriendsList {
 		private var list:MovieClip;
@@ -30,10 +31,12 @@
 				//function loadAvatar( url:String ) {
 					var url:String = image as String;
 					trace("avatar loading: ", url);
+					temp.addChild( new MLoader(url) );
+					/*
 					loader = new Loader();
 					loader.cacheAsBitmap = true;
 					loader.contentLoaderInfo.addEventListener(Event.COMPLETE, function(e:Event){
-						trace("Avatar loaded...");
+						trace("Avatar load...");
 						temp.ff.appendText(" ("); // Debug
 						temp.ff.appendText(" " + loader.contentLoaderInfo.contentType);
 						var imgss:Bitmap = loader.contentLoaderInfo.content as Bitmap;
@@ -62,6 +65,7 @@
 					loader.load( new URLRequest( url + "?" + int(Math.random() * 100000) ), context );
 				//}
 				//loadAvatar(image);
+				*/
 			}
 			
 			list.addChild(temp);
