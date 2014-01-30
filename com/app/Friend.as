@@ -1,4 +1,4 @@
-﻿package  {
+﻿package com.app {
 	
 	import flash.display.MovieClip;
 	

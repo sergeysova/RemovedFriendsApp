@@ -1,4 +1,4 @@
-/*
+﻿/*
 Adobe Systems Incorporated(r) Source Code License Agreement
 Copyright(c) 2005 Adobe Systems Incorporated. All rights reserved.
 	
@@ -33,7 +33,7 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOURCE CODE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package vk.api.serialization.json {
+package com.vk.api.serialization.json {
 
 	public class JSONDecoder {
 		

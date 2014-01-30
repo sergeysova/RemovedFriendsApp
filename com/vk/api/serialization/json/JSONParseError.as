@@ -1,4 +1,4 @@
-/*
+﻿/*
 Adobe Systems Incorporated(r) Source Code License Agreement
 Copyright(c) 2005 Adobe Systems Incorporated. All rights reserved.
 	
@@ -33,56 +33,58 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOURCE CODE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package vk.api.serialization.json {
+package com.vk.api.serialization.json {
 
 	/**
-	 * This class provides encoding and decoding of the JSON format.
 	 *
-	 * Example usage:
-	 * <code>
-	 * 		// create a JSON string from an internal object
-	 * 		JSON.encode( myObject );
 	 *
-	 *		// read a JSON string into an internal object
-	 *		var myObject:Object = JSON.decode( jsonString );
-	 *	</code>
 	 */
-	public class JSON {
+	public class JSONParseError extends Error 	{
 	
+		/** The location in the string where the error occurred */
+		private var _location:int;
+		
+		/** The string in which the parse error occurred */
+		private var _text:String;
 	
 		/**
-		 * Encodes a object into a JSON string.
+		 * Constructs a new JSONParseError.
 		 *
-		 * @param o The object to create a JSON string for
-		 * @return the JSON string representing o
+		 * @param message The error message that occured during parsing
 		 * @langversion ActionScript 3.0
 		 * @playerversion Flash 9.0
 		 * @tiptext
 		 */
-		public static function encode( o:Object ):String {
-			
-			var encoder:JSONEncoder = new JSONEncoder( o );
-			return encoder.getString();
-		
+		public function JSONParseError( message:String = "", location:int = 0, text:String = "") {
+			super( message );
+			//name = "JSONParseError";
+			_location = location;
+			_text = text;
+		}
+
+		/**
+		 * Provides read-only access to the location variable.
+		 *
+		 * @return The location in the string where the error occurred
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function get location():int {
+			return _location;
 		}
 		
 		/**
-		 * Decodes a JSON string into a native object.
-		 * 
-		 * @param s The JSON string representing the object
-		 * @return A native object as specified by s
-		 * @throw JSONParseError
+		 * Provides read-only access to the text variable.
+		 *
+		 * @return The string in which the error occurred
 		 * @langversion ActionScript 3.0
 		 * @playerversion Flash 9.0
 		 * @tiptext
 		 */
-		public static function decode( s:String ):* {
-			
-			var decoder:JSONDecoder = new JSONDecoder( s )
-			return decoder.getValue();
-			
+		public function get text():String {
+			return _text;
 		}
-	
 	}
-
+	
 }

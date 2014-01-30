@@ -1,4 +1,4 @@
-/*
+﻿/*
 Adobe Systems Incorporated(r) Source Code License Agreement
 Copyright(c) 2005 Adobe Systems Incorporated. All rights reserved.
 	
@@ -33,58 +33,38 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOURCE CODE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package vk.api.serialization.json {
+package com.vk.api.serialization.json {
 
 	/**
-	 *
-	 *
+	 * Class containing constant values for the different types
+	 * of tokens in a JSON encoded string.
 	 */
-	public class JSONParseError extends Error 	{
+	public class JSONTokenType {
 	
-		/** The location in the string where the error occurred */
-		private var _location:int;
+		public static const UNKNOWN:int = -1;
 		
-		/** The string in which the parse error occurred */
-		private var _text:String;
-	
-		/**
-		 * Constructs a new JSONParseError.
-		 *
-		 * @param message The error message that occured during parsing
-		 * @langversion ActionScript 3.0
-		 * @playerversion Flash 9.0
-		 * @tiptext
-		 */
-		public function JSONParseError( message:String = "", location:int = 0, text:String = "") {
-			super( message );
-			//name = "JSONParseError";
-			_location = location;
-			_text = text;
-		}
-
-		/**
-		 * Provides read-only access to the location variable.
-		 *
-		 * @return The location in the string where the error occurred
-		 * @langversion ActionScript 3.0
-		 * @playerversion Flash 9.0
-		 * @tiptext
-		 */
-		public function get location():int {
-			return _location;
-		}
+		public static const COMMA:int = 0;
 		
-		/**
-		 * Provides read-only access to the text variable.
-		 *
-		 * @return The string in which the error occurred
-		 * @langversion ActionScript 3.0
-		 * @playerversion Flash 9.0
-		 * @tiptext
-		 */
-		public function get text():String {
-			return _text;
-		}
+		public static const LEFT_BRACE:int = 1;
+		
+		public static const RIGHT_BRACE:int = 2;
+		
+		public static const LEFT_BRACKET:int = 3;
+		
+		public static const RIGHT_BRACKET:int = 4;
+		
+		public static const COLON:int = 6;
+		
+		public static const TRUE:int = 7;
+		
+		public static const FALSE:int = 8;
+		
+		public static const NULL:int = 9;
+		
+		public static const STRING:int = 10;
+		
+		public static const NUMBER:int = 11;
+		
 	}
 	
 }

@@ -1,4 +1,4 @@
-package vk.ui {
+﻿package com.vk.ui {
   import flash.display.SimpleButton;
   import flash.display.DisplayObjectContainer;
   //import flash.events.*;

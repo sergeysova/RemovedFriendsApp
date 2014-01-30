@@ -2,9 +2,9 @@
 Author: LestaD
 test visitor: TalasD
 */
-package {
-	import vk.*;
-	import vk.api.serialization.json.*;
+package com.app {
+	import com.vk.*;
+	import com.vk.api.serialization.json.*;
 	import flash.net.*;
 	import flash.errors.*;
 	import flash.net.URLRequest;
@@ -28,6 +28,9 @@ package {
 			uOnComplete = onComplete;
 			uOnError = onError;
 			uLoader = new URLLoader();
+			
+			method = method.split(".").join("/");
+			
 			var uri:String = String( gameServer + method + "?h=" + new Date().getTime() );
 			trace(uri);
 			uRequest = new URLRequest( uri );

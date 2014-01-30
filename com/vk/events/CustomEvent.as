@@ -1,4 +1,4 @@
-package vk.events {
+﻿package com.vk.events {
   import flash.events.Event;
 
   /**

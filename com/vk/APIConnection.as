@@ -1,11 +1,11 @@
-package vk {
+﻿package com.vk {
   import flash.net.LocalConnection;
   import flash.external.ExternalInterface;
   import flash.events.*;
   import flash.utils.setTimeout;
 
-  import vk.events.*;
-  import vk.api.DataProvider;
+  import com.vk.events.*;
+  import com.vk.api.DataProvider;
 
 
   /**

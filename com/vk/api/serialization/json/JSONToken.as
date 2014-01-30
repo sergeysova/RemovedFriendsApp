@@ -1,4 +1,4 @@
-/*
+﻿/*
 Adobe Systems Incorporated(r) Source Code License Agreement
 Copyright(c) 2005 Adobe Systems Incorporated. All rights reserved.
 	
@@ -33,38 +33,75 @@ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOURCE CODE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package vk.api.serialization.json {
+package com.vk.api.serialization.json {
 
-	/**
-	 * Class containing constant values for the different types
-	 * of tokens in a JSON encoded string.
-	 */
-	public class JSONTokenType {
+	public class JSONToken {
 	
-		public static const UNKNOWN:int = -1;
+		private var _type:int;
+		private var _value:Object;
 		
-		public static const COMMA:int = 0;
+		/**
+		 * Creates a new JSONToken with a specific token type and value.
+		 *
+		 * @param type The JSONTokenType of the token
+		 * @param value The value of the token
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function JSONToken( type:int = -1 /* JSONTokenType.UNKNOWN */, value:Object = null ) {
+			_type = type;
+			_value = value;
+		}
 		
-		public static const LEFT_BRACE:int = 1;
+		/**
+		 * Returns the type of the token.
+		 *
+		 * @see com.adobe.serialization.json.JSONTokenType
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function get type():int {
+			return _type;	
+		}
 		
-		public static const RIGHT_BRACE:int = 2;
+		/**
+		 * Sets the type of the token.
+		 *
+		 * @see com.adobe.serialization.json.JSONTokenType
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function set type( value:int ):void {
+			_type = value;	
+		}
 		
-		public static const LEFT_BRACKET:int = 3;
+		/**
+		 * Gets the value of the token
+		 *
+		 * @see com.adobe.serialization.json.JSONTokenType
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function get value():Object {
+			return _value;	
+		}
 		
-		public static const RIGHT_BRACKET:int = 4;
-		
-		public static const COLON:int = 6;
-		
-		public static const TRUE:int = 7;
-		
-		public static const FALSE:int = 8;
-		
-		public static const NULL:int = 9;
-		
-		public static const STRING:int = 10;
-		
-		public static const NUMBER:int = 11;
-		
+		/**
+		 * Sets the value of the token
+		 *
+		 * @see com.adobe.serialization.json.JSONTokenType
+		 * @langversion ActionScript 3.0
+		 * @playerversion Flash 9.0
+		 * @tiptext
+		 */
+		public function set value ( v:Object ):void {
+			_value = v;	
+		}
+
 	}
 	
 }

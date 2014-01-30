@@ -1,4 +1,4 @@
-package vk.api {
+﻿package com.vk.api {
   public class MD5 {
       public static function encrypt(data: String): String {
         var x:Array;
