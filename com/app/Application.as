@@ -102,14 +102,15 @@
 		}
 		
 		private function buttonSaveClick(e:Event):void {
-			trace(1);
-			
 			VK.api("friends.get",
 				{v:"5.7"},
 				function(response){
 					var list:String = response.items.join(",");
 					API.call("settings.update.save",
-						{received: list as String},
+						{
+							received: list as String,
+							uid: FV['viewer_id']
+						},
 						function(resp) {
 							if ( resp.error ) {
 								UF.Clear();
@@ -123,7 +124,9 @@
 							g.helpf.visible = false;
 						},
 						function(err) {
-							
+							UF.Clear();
+							UF.Add("Ошибка сохранения! Попробуйте позже!");
+							g.helpf.visible = false;
 						}
 					);
 				},
@@ -131,36 +134,8 @@
 					UF.Clear();
 					UF.Add("Ошибка сохранения! Попробуйте позже!");
 					g.helpf.visible = false;
-					return;
 				}
 			);
-			
-			
-			return; // ---------------------------------------------------------------------
-			VK.api("friends.get", {order:"name", v:"5.0"}, function(response) {
-				   trace(2);
-				var friendlist:String = response.items.join(",");
-				API.call("settings/update/save",
-					{received: friendlist},
-					function(r) {
-						if ( r.error ) {
-							UF.Clear();
-							UF.Add("Ошибка сохранения! Попробуйте позже!");
-							g.helpf.visible = false;
-							return;
-						}
-						
-						UF.Clear();
-						UF.Add("Успешно сохранено!");
-						g.helpf.visible = false;
-					},
-					function(error) {
-						UF.Clear();
-						UF.Add("Ошибка 0x004! Перезагрузите приложение!");
-						g.helpf.visible = false;
-					}
-				); // API.call
-			}); // VK.api
 		}; // buttonSaveClick
 		
 		private function buttonUpdateClick(e:Event):void {
